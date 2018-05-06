@@ -12,9 +12,11 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
 import sidebarReducer from './store/reducers/sidebarReducer';
+import loginReducer from './store/reducers/loginReducer';
 
 const rootReducer = combineReducers({
-  side: sidebarReducer
+  side: sidebarReducer,
+  login: loginReducer
 })
 
 const logger = store => {

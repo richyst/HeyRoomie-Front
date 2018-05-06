@@ -1,20 +1,40 @@
 import React from 'react';
-import { Layout, Breadcrumb } from 'antd';
+import { Layout } from 'antd';
+
+import {Route, Switch, withRouter } from 'react-router-dom';
+
+import {connect} from 'react-redux';
+
+import Home from '../../Home/home';
 
 const { Content } = Layout;
 
-const content = () => {
+const content = (props) => {
+  console.log('[Content]', props);
   return (
     <Content style={{ margin: '0 16px' }}>
-      <Breadcrumb style={{ margin: '16px 0' }}>
-        <Breadcrumb.Item>User</Breadcrumb.Item>
-        <Breadcrumb.Item>Bill</Breadcrumb.Item>
-      </Breadcrumb>
-      <div style={{ padding: 24, background: '#fff', minHeight: 360 }}>
-        Bill is a cat.
+      {props.user ? <div style={{height: '32px'}} ></div> : null}
+
+      <div style={{ padding: 24, background: '#fff', minHeight: '80vh' }}>
+        <Switch>
+          <Route path="/" exact component={Home} />
+          {props.user ? null : <Route path="/signin" exact component={Home} />}
+        </Switch>
       </div>
     </Content>
   )
 }
 
-export default content;
+const mapStateToProps = state => {
+  return {
+    user: state.login.user,
+    access: state.login.access
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(content));

@@ -10,11 +10,13 @@ const { Header } = Layout;
 const header = (props) => {
   return (
     <Header style={{ background: '#fff', padding: 0 }} >
-      <Icon
-        className="trigger"
-        type={props.collapsed ? 'menu-unfold' : 'menu-fold'}
-        onClick={props.onToggle}
-      />
+      <div >
+        <Icon
+          className="trigger"
+          type={props.collapsed ? 'menu-unfold' : 'menu-fold'}
+          onClick={props.onToggle}
+        />
+      </div>
     </Header>
   );
 }

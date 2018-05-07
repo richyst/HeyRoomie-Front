@@ -6,6 +6,7 @@ import {Route, Switch, withRouter } from 'react-router-dom';
 import {connect} from 'react-redux';
 
 import Home from '../../Home/home';
+import Cuestionario from '../../Cuestionario/cuestionario';
 
 const { Content } = Layout;
 
@@ -18,6 +19,7 @@ const content = (props) => {
       <div style={{ padding: 24, background: '#fff', minHeight: '80vh' }}>
         <Switch>
           <Route path="/" exact component={Home} />
+          <Route path="/perfil/cuestionario" exact component={Cuestionario} />
           {props.user ? null : <Route path="/signin" exact component={Home} />}
         </Switch>
       </div>

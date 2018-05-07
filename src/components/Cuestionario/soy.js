@@ -13,12 +13,12 @@ const dateFormat = 'YYYY-MM-DD';
   state = {
     name: '',
     lastname: '',
-    gender: 0,
-    smokes: 0,
-    alcohol: 0,
-    pets: 0,
-    partyMonster: 0,
-    noise: 0,
+    gender: false,
+    smokes: false,
+    alcohol: false,
+    pets: false,
+    partyMonster: false,
+    noise: false,
     occupation: false,
     birthdate: ''
   }
@@ -41,29 +41,29 @@ const dateFormat = 'YYYY-MM-DD';
   render() {
     const opcionesGenero = [{
         name: 'Masculino',
-        value: 1
+        value: true
       },
       {
         name: 'Femenino',
-        value: 0
+        value: false
       },
     ];
     const opcionesSiNo = [{
         name: 'Si',
-        value: 1
+        value: true
       },
       {
         name: 'No',
-        value: 0
+        value: false
       },
     ];
     const opcionesOcupacion = [{
         name: 'Trabajo',
-        value: 1
+        value: true
       },
       {
         name: 'Estudio',
-        value: 0
+        value: false
       },
     ];
 
@@ -74,12 +74,14 @@ const dateFormat = 'YYYY-MM-DD';
           
           <div className="col-sm-12 col-md-6 seccionIzq seccion">
             <PreguntaTexto 
+              type="text"
               label="Nombre" 
               placeholder="Escribe tu nombre..." 
               value={this.state.name} 
               onChange={(event)=> this.setState({...this.state, name: event.target.value})}  
               />
             <PreguntaTexto 
+              type="text"
               label="Apellidos" 
               placeholder="Escribe tu apellido..." 
               value={this.state.lastname} 
@@ -87,10 +89,12 @@ const dateFormat = 'YYYY-MM-DD';
               />
             <PreguntaRadio
               label="Género"
+              value={this.state.gender}
               options={opcionesGenero}
               onChange={(event) => this.setState({...this.state, gender:event.target.value}) }
               />
             <PreguntaRadio
+              value={this.state.occupation}
               label="¿A qué te dedicas?"
               options={opcionesOcupacion}
               onChange={(event) => this.setState({...this.state, occupation:event.target.value}) }
@@ -105,27 +109,32 @@ const dateFormat = 'YYYY-MM-DD';
           <div className="col-sm-12 col-md-6 seccion">
             <PreguntaRadio
               label="¿Fumas?"
+              value={this.state.smokes}
               options={opcionesSiNo}
               onChange={(event) => this.setState({...this.state, smokes:event.target.value}) }
               />
             <PreguntaRadio
               label="¿Bebes?"
+              value={this.state.alcohol}
               options={opcionesSiNo}
               onChange={(event) => this.setState({...this.state, alcohol:event.target.value}) }
               />
             <PreguntaRadio
               label="¿Eres ruidoso?"
+              value={this.state.noise}
               options={opcionesSiNo}
               onChange={(event) => this.setState({...this.state, noise:event.target.value}) }
               />
             <PreguntaRadio
               label="¿Te gusta la fiesta?"
+              value={this.state.partyMonster}
               options={opcionesSiNo}
               onChange={(event) => this.setState({...this.state, partyMonster:event.target.value}) }
               />
             <PreguntaRadio
               label="¿Tienes mascotas?"
               options={opcionesSiNo}
+              value={this.state.pets}
               onChange={(event) => this.setState({...this.state, pets:event.target.value}) }
               />
             <div style={{marginLeft: '30%'}}>

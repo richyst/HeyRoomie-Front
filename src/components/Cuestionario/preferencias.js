@@ -1,12 +1,13 @@
 import React from 'react';
 
-import { Button, message } from 'antd'
+import { Button, Input, message } from 'antd'
 
 import './cuestionario.css';
 
-import PreguntaTexto from '../Utility/preguntaTexto';
 import PreguntaRadio from '../Utility/preguntaRadio';
+// import Mapa from '../Utility/mapa';
 
+const InputGroup = Input.Group;
 class preferencias extends React.Component{
   state = {
     pMinAge: '',
@@ -23,11 +24,21 @@ class preferencias extends React.Component{
     pLocationRadius: 0
   }
 
+  // componentDidMount() {
+  //   if (navigator.geolocation) {
+  //     navigator.geolocation.getCurrentPosition((position) => {
+  //       console.log(position);
+  //     });
+  //   } else {
+  //     alert("Geolocation is not supported by this browser.");
+  //   }
+  // }
+
   componentDidUpdate() {
     console.log('[Prefs]',this.state);
   }
   validate = () => {
-    if (this.state.name !== '' && this.state.lastname !== '' && this.state.birthdate !== '') {
+    if (this.state.pMaxAge !== '' && this.state.pMinAge) {
       this.enviarInfo();
     } else {
       message.error('No todos los campos están correctos, checa tu info');
@@ -46,8 +57,13 @@ class preferencias extends React.Component{
         name: 'Femenino',
         value: 0
       },
+      {
+        name: 'Me Vale',
+        value: 2
+      }
     ];
-    const opcionesSiNo = [{
+    const opcionesSiNo = [
+      {
         name: 'Si',
         value: 1
       },
@@ -55,69 +71,95 @@ class preferencias extends React.Component{
         name: 'No',
         value: 0
       },
+      {
+        name: 'Me Vale',
+        value: 2
+      }
+      
     ];
     const opcionesOcupacion = [{
-        name: 'Trabajo',
+        name: 'Trabajar',
         value: 1
       },
       {
-        name: 'Estudio',
+        name: 'Estudiar',
         value: 0
       },
+      {
+        name: 'Me Vale',
+        value: 2
+      }
     ];
     return (
       <React.Fragment>
         <h5>Quieres que tu roomie...</h5>
         <div className="row contenedor" >
           <div className="col-sm-12 col-md-6 seccionIzq seccion">
-            <PreguntaTexto 
-              label="Tenga al menos:" 
-              placeholder="x años..." 
-              value={this.state.pMinAge} 
-              onChange={(event)=> this.setState({...this.state, pMinAge: event.target.value})}  
-              />
-            <PreguntaTexto 
-              label="Tenga máximo" 
-              placeholder="x años..." 
-              value={this.state.pMaxAge} 
-              onChange={(event)=> this.setState({...this.state, pMaxAge: event.target.value})}  
-              />
+            <h6>Tenga una edad </h6>
+            <InputGroup compact style={{marginBottom: '30px'}}>
+              <Input 
+                value={this.state.pMinAge} 
+                onChange={(event) => this.setState({...this.state, pMinAge: event.target.value})} 
+                style={{ width: 100, textAlign: 'center' }} placeholder="mínima" 
+                />
+              <Input 
+                style={{ width: 30, borderLeft: 0, pointerEvents: 'none', backgroundColor: '#fff' }} 
+                placeholder="y" 
+                disabled 
+                />
+              <Input 
+                value={this.state.pMaxAge}
+                onChange={(event) => this.setState({...this.state, pMaxAge: event.target.value})} 
+                style={{ width: 100, textAlign: 'center', borderLeft: 0 }} 
+                placeholder="máxima" 
+                />
+            </InputGroup>            
             <PreguntaRadio
               label="Género"
+              value={this.state.pGender}
               options={opcionesGenero}
-              onChange={(event) => this.setState({...this.state, gender:event.target.value}) }
+              onChange={(event) => this.setState({...this.state, pGender:event.target.value}) }
               />
             <PreguntaRadio
-              label="¿A qué te dedicas?"
+              label="Que se dedique a"
+              value={this.state.pOcupacion}
               options={opcionesOcupacion}
-              onChange={(event) => this.setState({...this.state, occupation:event.target.value}) }
+              onChange={(event) => this.setState({...this.state, pOcupacion:event.target.value}) }
               />
+              {/* <div style={{height: '100px', width:'400px'}}>
+                  <Mapa />
+              </div> */}
           </div>
           <div className="col-sm-12 col-md-6 seccion">
             <PreguntaRadio
-              label="¿Fumas?"
+              label="¿Fume?"
+              value={this.state.pSmokes}
               options={opcionesSiNo}
-              onChange={(event) => this.setState({...this.state, smokes:event.target.value}) }
+              onChange={(event) => this.setState({...this.state, pSmokes:event.target.value}) }
               />
             <PreguntaRadio
-              label="¿Bebes?"
+              label="¿Beba?"
+              value={this.state.pAlcohol}
               options={opcionesSiNo}
-              onChange={(event) => this.setState({...this.state, alcohol:event.target.value}) }
+              onChange={(event) => this.setState({...this.state, pAlcohol:event.target.value}) }
               />
             <PreguntaRadio
-              label="¿Eres ruidoso?"
+              label="¿Sea ruidoso?"
+              value={this.state.pNoise}
               options={opcionesSiNo}
-              onChange={(event) => this.setState({...this.state, noise:event.target.value}) }
+              onChange={(event) => this.setState({...this.state, pNoise:event.target.value}) }
               />
             <PreguntaRadio
-              label="¿Te gusta la fiesta?"
+              label="¿Le guste la fiesta?"
+              value={this.state.pPartyMonster}
               options={opcionesSiNo}
-              onChange={(event) => this.setState({...this.state, partyMonster:event.target.value}) }
+              onChange={(event) => this.setState({...this.state, pPartyMonster:event.target.value}) }
               />
             <PreguntaRadio
-              label="¿Tienes mascotas?"
+              label="¿Tenga mascotas?"
+              value={this.state.pPets}
               options={opcionesSiNo}
-              onChange={(event) => this.setState({...this.state, pets:event.target.value}) }
+              onChange={(event) => this.setState({...this.state, pPets:event.target.value}) }
               />
             <div style={{marginLeft: '30%'}}>
               <Button onClick={this.validate} type="primary">Enviar</Button>

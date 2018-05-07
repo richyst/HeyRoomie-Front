@@ -6,11 +6,10 @@ const preguntaTexto = (props) => {
     <div style={{marginBottom:'30px'}}>
       <h6>{props.label}</h6>
       <Input 
-      placeholder={props.placeholder}
-      value={props.value}
-      onChange={(event) => props.onChange(event)} 
-
-      
+        type={props.type}
+        placeholder={props.placeholder}
+        value={props.value}
+        onChange={(event) => props.onChange(event)} 
       />
     </div>
   );
@@ -18,8 +17,12 @@ const preguntaTexto = (props) => {
 
 preguntaTexto.propTypes = {
   label: PropTypes.string,
+  type: PropTypes.string,
   placeholder: PropTypes.string,
-  value: PropTypes.string,
+  value: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number
+  ]),
   onChange: PropTypes.func
 }
 export default preguntaTexto;

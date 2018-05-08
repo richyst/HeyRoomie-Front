@@ -10,21 +10,24 @@ import Cuestionario from '../../Cuestionario/cuestionario';
 
 const { Content } = Layout;
 
-const content = (props) => {
-  console.log('[Content]', props);
-  return (
+class content extends React.Component {
+
+  render() {
+      return (
     <Content style={{ margin: '0 16px' }}>
-      {props.user ? <div style={{height: '32px'}} ></div> : null}
+      {this.props.user ? <div style={{height: '32px'}} ></div> : null}
 
       <div style={{ padding: 24, background: '#fff', minHeight: '80vh' }}>
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/perfil/cuestionario" exact component={Cuestionario} />
-          {props.user ? null : <Route path="/signin" exact component={Home} />}
+          {this.props.user ? null : <Route path="/signin" exact component={Home} />}
         </Switch>
       </div>
     </Content>
   )
+  }
+
 }
 
 const mapStateToProps = state => {
@@ -39,4 +42,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(content));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(content));

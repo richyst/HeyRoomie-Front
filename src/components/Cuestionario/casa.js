@@ -1,18 +1,16 @@
 import React from 'react';
-
-import { Button, message } from 'antd'
-
+import { Button, message } from 'antd';
 import PreguntaTexto from '../Utility/preguntaTexto';
 import './cuestionario.css';
-
+import {Link, withRouter} from  'react-router-dom';
 import PreguntaRadio from '../Utility/preguntaRadio';
 // import Mapa from '../Utility/mapa';
-export default class casa extends React.Component{
+class Casa extends React.Component{
   state = {
     dueno: false,
-    rooms: 0,
+    rooms: 1,
     pets: false,
-    restrooms: 0,
+    restrooms: 1,
     kitchen: false,
     livingroom: 0,
     garage: 0,
@@ -28,13 +26,16 @@ export default class casa extends React.Component{
   }
 
   componentDidUpdate() {
-    console.log('[Casa]',this.state);
+    console.log('[Casa]',this.state , this.props);
   }
   validate = () => {
-    if (this.state.pMaxAge !== '' && this.state.pMinAge) {
-      this.enviarInfo();
+    if (this.state.dueno) {
+      if (this.state.rooms >= 1 ){
+        this.enviarInfo();
+      }
     } else {
-      message.error('No todos los campos están correctos, checa tu info');
+      this.props.history.push('/')
+
     }
   }
 
@@ -166,13 +167,19 @@ export default class casa extends React.Component{
               />
 
           </div>
-            <div style={{marginLeft: 'auto', marginRight: 'auto'}}>
-              <Button onClick={this.validate} type="primary">Enviar</Button>
-            </div>
         </div> 
         : 
         null}
+         <div style={{marginLeft: 'auto', marginRight: 'auto', width:'10%'}}>
+          <Button onClick={this.validate} type="primary">Enviar</Button>
+           <Link to="/" >
+            <button>Go to About</button>
+          </Link>
+        </div>
       </React.Fragment>
     );
   }
 }
+
+
+export default withRouter(Casa);

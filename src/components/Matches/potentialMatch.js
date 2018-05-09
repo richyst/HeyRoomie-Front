@@ -1,37 +1,30 @@
 import React from 'react';
 import {List, Icon, Avatar} from 'antd';
+import {Link, withRouter} from 'react-router-dom';
 
-const IconText = ({ type, text }) => (
-  <span>
-    <Icon type={type} style={{ marginRight: 8 }} />
-    {text}
-  </span>
-);
 
 const potentialMatch = (props) => {
-
-  return (
-    <List.Item
-      key={props.key}
-      actions=
-      {
-        [
-          <IconText type="star-o" text="156" />, 
-          <IconText type="like-o" text="156" />, 
-          <IconText type="message" text="2" />
-        ]
-      }
-      extra={<img width={272} alt="logo" src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png" />}
-      >
-      <List.Item.Meta
-        avatar={<Avatar src={props.avatar} />}
-        title={<a href={props.href}>{props.title}</a>}
-        description={props.description}
-        />
-      {props.content}
-    </List.Item>
-  );
-
+    return (
+      <List.Item
+        key={props.key}
+        actions=
+        {
+          [
+            <Icon onClick={() => props.acceptMatch(props.id)} type="like-o" />, 
+            <Icon onClick={() => props.rejectMatch(props.id)}   type="dislike-o" />
+          ]
+        }
+        extra={<img width={272} alt="logo" src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png" />}
+        >
+        <List.Item.Meta
+          avatar={<Avatar src={props.avatar} />}
+          title={<Link to={'/perfil/' + props.id}>{props.title}</Link>}
+          description={props.description}
+          />
+        {props.content}
+      </List.Item>
+    );
+  
 }
 
-export default potentialMatch;
+export default withRouter(potentialMatch);

@@ -7,10 +7,11 @@ import {List } from 'antd';
   for (let i = 0; i < 23; i++) {
     listData.push({
       href: 'http://ant.design',
-      title: `ant design part ${i}`,
+      title: `Ricardo Salcedo ${i}`,
+      id: i,
       avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
-      description: 'Ant Design, a design language for background applications, is refined by Ant UED Team.',
-      content: 'We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.',
+      description: 'bla bla bla bla bla test teste test',
+      content: 'Otro renglón para opciones del usuario',
     });
   }
 class MatchesToBe extends React.Component {
@@ -31,6 +32,13 @@ class MatchesToBe extends React.Component {
       }
     )
   }
+
+  acceptMatch = (id) => {
+    console.log('Match ' + id + ' Aceptado')
+  } 
+  rejectMatch = (id) => {
+    console.log('Match ' + id + ' Rechazado')
+  }
   render() {
     return (
       <div style={{overflowY: 'scroll', maxHeight: '80vh'}} >
@@ -38,12 +46,14 @@ class MatchesToBe extends React.Component {
         <hr/>
         <List
           itemLayout="vertical"
-          size="large"
           dataSource={listData}
           footer={<div><b>ant design</b> footer part</div>}
           renderItem={item => (
             <PotentialMatch 
+              acceptMatch={this.acceptMatch}
+              rejectMatch={this.rejectMatch}
               avatar={item.avatar}
+              id={item.id}
               title={item.title}
               description={item.description}
               href={item.href}

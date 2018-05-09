@@ -3,7 +3,7 @@ import '../../Utility/estilos.css';
 const logo = () => {
  
   return (
-    <div style={{margin: 'auto', width: '240px'}}>
+    <div className="col-md-3 offset-md-2">
       <div className="logo">
       </div>
     </div>

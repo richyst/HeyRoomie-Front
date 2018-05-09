@@ -50,7 +50,7 @@ class Perfil extends React.Component {
 
         pPets: this.state.pPets === 0 ? 'No Quiere Mascotas' : this.state.pPets === 1 ? 'Prefie Mascotas' : 'No le Importan las Mascotas',
         pAlcohol: this.state.pAlcohol === 0 ? 'No Quiere Bebedores' : this.state.pAlcohol === 1 ? 'Prefie Bebedores' : 'No le Importan los Bebedores',
-        pNoise: this.state.pNoise === 0 ? 'No Quiere Ruidosos' : this.state.pNoise === 1 ? 'Prefie Ruidosos' : 'No le Importan los Ruidosos',
+        pNoise: this.state.pNoise === 0 ? 'No Quiere Ruidosos' : this.state.pNoise === 1 ? 'Prefiere Ruidosos' : 'No le Importan los Ruidosos',
         pSmokes: this.state.pSmokes === 0 ? 'No Quiere Fumadores' : this.state.pSmokes === 1 ? 'Prefie Fumadores' : 'No le Importan los Fumadores',
         pGender: this.state.pGender === 0 ? 'Prefiere Mujeres' : this.state.pGender === 1 ? 'Prefie Hombres' : 'No le Importa el Género',
         pPartyMonster: this.state.pPartyMonster === 0 ? 'No Quiere Fiesteros' : this.state.pPartyMonster === 1 ? 'Prefie Fiesteros' : 'No le Importan los Fiesteros',

@@ -36,9 +36,6 @@ const menu = () => {
         </Menu.Item>
         
       </SubMenu> */}
-      <Menu.Item key="/signin">
-        <NavLink to="/signin" >Login</NavLink>
-      </Menu.Item>
     </Menu>
   );
 }

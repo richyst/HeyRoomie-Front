@@ -6,7 +6,6 @@ import {Route, Switch, withRouter } from 'react-router-dom';
 import {connect} from 'react-redux';
 import MatchedToBe from '../../Matches/MatchedToBe';
 
-import Home from '../../Home/home';
 import Cuestionario from '../../Cuestionario/cuestionario';
 import Usuarios from '../../../containers/usuarios';
 import Perfil from '../../../containers/perfil';
@@ -46,8 +45,7 @@ class content extends React.Component {
             {this.props.user ? <Route path="/perfil/" component={Perfil} /> : null}
             {this.props.user ? <Route path="/" component={MatchedToBe} /> : null}
 
-            {this.props.user ? null : <Route path="/signin" exact component={Usuarios} />}
-            {this.props.user ? null : <Route path="/"  component={Home} />}
+            {this.props.user ? null : <Route path="/"  component={Usuarios} />}
           </Switch>
         </div>
       </Content>

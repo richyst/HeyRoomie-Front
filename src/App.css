@@ -16,3 +16,36 @@
 .trigger:hover {
   color: #1890ff;
 }
+/* .ant-radio-button-wrapper-checked {
+  background: #fff;
+  border-color: #FF7043;
+  color: #FF7043;
+  -webkit-box-shadow: -1px 0 0 0 #FF7043;
+  box-shadow: -1px 0 0 0 #FF7043;
+  z-index: 1;
+}
+
+.ant-radio-button-wrapper-checked::before {
+  background-color: #FF7043 !important;
+  opacity: 0.1;
+}
+
+.ant-radio-button-wrapper-checked:first-child {
+  border-color: #FF7043;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+}
+
+.ant-radio-button-wrapper-checked:hover {
+  border-color: #40a9ff;
+  -webkit-box-shadow: -1px 0 0 0 #40a9ff;
+  box-shadow: -1px 0 0 0 #40a9ff;
+  color: #40a9ff;
+}
+
+.ant-radio-button-wrapper-checked:active {
+  border-color: #096dd9;
+  -webkit-box-shadow: -1px 0 0 0 #096dd9;
+  box-shadow: -1px 0 0 0 #096dd9;
+  color: #096dd9;
+} */

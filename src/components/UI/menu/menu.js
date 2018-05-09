@@ -16,22 +16,26 @@ const menu = () => {
         <Menu.Item key="2">
           <NavLink to="/perfil" >Ver Perfil</NavLink>
         </Menu.Item>
-        <Menu.Item key="3">Alex</Menu.Item>
       </SubMenu>
-      <SubMenu
+
+      <Menu.Item key="/matches">
+        <NavLink to="/matches" >Matches</NavLink>
+      </Menu.Item>
+
+      <Menu.Item key="/chats">
+        <NavLink to="/chats" >Chats</NavLink>
+      </Menu.Item>
+
+      {/* <SubMenu
         key="sub2"
         title={<span><Icon type="team" /><span>Matches</span></span>}
       >
-        <Menu.Item key="/matches/matched">
-          <NavLink to="/matches/matched" >Matched</NavLink>
-        </Menu.Item>
+        
         <Menu.Item key="/matches/tobe">
           <NavLink to="/matches/tobe" >To Be Matched</NavLink>
         </Menu.Item>
-        <Menu.Item key="/matches/chat">
-          <NavLink to="/matches/chat" >Chats</NavLink>
-        </Menu.Item>
-      </SubMenu>
+        
+      </SubMenu> */}
       <Menu.Item key="/signin">
         <NavLink to="/signin" >Login</NavLink>
       </Menu.Item>

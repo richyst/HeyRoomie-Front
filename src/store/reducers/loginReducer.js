@@ -4,8 +4,8 @@ import * as actionTypes from '../actions/loginActionTypes';
 const initialState = {
   // user: localStorage.getItem('user') ? localStorage.getItem('user') : null , 
   // access: localStorage.getItem('access') ? localStorage.getItem('access') : null
-    user: null,
-    access: null
+    user: 'Test',
+    access: 'testperritoaccesstokenlalala'
 }
 
 const reducer = (state = initialState, action) => {
@@ -30,5 +30,4 @@ const reducer = (state = initialState, action) => {
       return state;
   }
 }
-
 export default reducer;

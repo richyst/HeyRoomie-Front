@@ -12,7 +12,7 @@ const sidebar = (props) => {
       collapsed={props.collapsed}
       onCollapse={props.onCollapse}
     >
-      <div className="logo" >
+      <div className="logoMenu" >
       </div>
       <Menu />
     </Sider>

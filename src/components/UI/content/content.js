@@ -4,11 +4,12 @@ import { Layout } from 'antd';
 import {Route, Switch, withRouter } from 'react-router-dom';
 
 import {connect} from 'react-redux';
+import MatchedToBe from '../../Matches/MatchedToBe';
 
 import Home from '../../Home/home';
 import Cuestionario from '../../Cuestionario/cuestionario';
 import Usuarios from '../../../containers/usuarios';
-
+import Perfil from '../../../containers/perfil';
 const { Content } = Layout;
 
 class content extends React.Component {
@@ -37,10 +38,15 @@ class content extends React.Component {
 
         <div style={estilo}>
           <Switch>
-            {this.props.user ? null : <Route path="/" exact component={Home} />}
-            <Route path="/" exact component={Home} />
-            <Route path="/perfil/cuestionario" exact component={Cuestionario} />
+            {this.props.user ? <Route path="/perfil/cuestionario" exact component={Cuestionario} /> : null}
+            {this.props.user ? <Route path="/matches" exact component={MatchedToBe} /> : null}
+            {this.props.user ? <Route path="/chats" exact /> : null}
+            {this.props.user ? <Route path="/perfil/:id" component={Perfil} /> : null}
+            {this.props.user ? <Route path="/perfil/" component={Perfil} /> : null}
+            {this.props.user ? <Route path="/" component={MatchedToBe} /> : null}
+
             {this.props.user ? null : <Route path="/signin" exact component={Usuarios} />}
+            {this.props.user ? null : <Route path="/"  component={Home} />}
           </Switch>
         </div>
       </Content>

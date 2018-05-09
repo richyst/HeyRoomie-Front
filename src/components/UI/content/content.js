@@ -10,6 +10,7 @@ import Home from '../../Home/home';
 import Cuestionario from '../../Cuestionario/cuestionario';
 import Usuarios from '../../../containers/usuarios';
 import Perfil from '../../../containers/perfil';
+import Chat from '../../Chat/chat';
 const { Content } = Layout;
 
 class content extends React.Component {
@@ -40,7 +41,7 @@ class content extends React.Component {
           <Switch>
             {this.props.user ? <Route path="/perfil/cuestionario" exact component={Cuestionario} /> : null}
             {this.props.user ? <Route path="/matches" exact component={MatchedToBe} /> : null}
-            {this.props.user ? <Route path="/chats" exact /> : null}
+            {this.props.user ? <Route path="/chats" exact component={Chat} /> : null}
             {this.props.user ? <Route path="/perfil/:id" component={Perfil} /> : null}
             {this.props.user ? <Route path="/perfil/" component={Perfil} /> : null}
             {this.props.user ? <Route path="/" component={MatchedToBe} /> : null}

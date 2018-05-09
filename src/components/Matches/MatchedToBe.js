@@ -34,6 +34,8 @@ class MatchesToBe extends React.Component {
   render() {
     return (
       <div style={{overflowY: 'scroll', maxHeight: '80vh'}} >
+        <h4>Eres compatible con estos usuarios...</h4>
+        <hr/>
         <List
           itemLayout="vertical"
           size="large"

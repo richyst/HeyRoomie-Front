@@ -11,10 +11,12 @@ import registerServiceWorker from './registerServiceWorker';
 
 import sidebarReducer from './store/reducers/sidebarReducer';
 import loginReducer from './store/reducers/loginReducer';
+import chatReducer from './store/reducers/chatReducer';
 
 const rootReducer = combineReducers({
   side: sidebarReducer,
-  login: loginReducer
+  login: loginReducer,
+  chat: chatReducer
 })
 
 const logger = store => {

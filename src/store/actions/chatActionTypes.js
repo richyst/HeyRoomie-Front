@@ -1,0 +1,1 @@
+export const USER_CLICKED = 'USER_CLICKED';

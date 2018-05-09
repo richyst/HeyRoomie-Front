@@ -1,5 +1,5 @@
 import React from 'react';
-
+import axiosInst from '../../axios';
 import { Button, Input, message } from 'antd'
 
 import './cuestionario.css';
@@ -46,7 +46,13 @@ class preferencias extends React.Component{
   }
 
   enviarInfo() {
-    message.success('Exito! Pasa a la siguiente sección.')
+    axiosInst.put('/user', this.state).then(
+      res => {
+        console.log(res);
+      }
+    ).catch(error => {
+      console.log(error);
+    })
   }
   render(){
     const opcionesGenero = [{
@@ -98,6 +104,7 @@ class preferencias extends React.Component{
             <h6>Tenga una edad </h6>
             <InputGroup compact style={{marginBottom: '30px'}}>
               <Input 
+                type="number"
                 value={this.state.pMinAge} 
                 onChange={(event) => this.setState({...this.state, pMinAge: event.target.value})} 
                 style={{ width: 100, textAlign: 'center' }} placeholder="mínima" 
@@ -108,6 +115,7 @@ class preferencias extends React.Component{
                 disabled 
                 />
               <Input 
+                type="number"
                 value={this.state.pMaxAge}
                 onChange={(event) => this.setState({...this.state, pMaxAge: event.target.value})} 
                 style={{ width: 100, textAlign: 'center', borderLeft: 0 }} 

@@ -22,9 +22,15 @@ const menu = () => {
         key="sub2"
         title={<span><Icon type="team" /><span>Matches</span></span>}
       >
-        <Menu.Item key="4">Ver</Menu.Item>
-        <Menu.Item key="5">Buscar</Menu.Item>
-        <Menu.Item key="6">Chats</Menu.Item>
+        <Menu.Item key="/matches/matched">
+          <NavLink to="/matches/matched" >Matched</NavLink>
+        </Menu.Item>
+        <Menu.Item key="/matches/tobe">
+          <NavLink to="/matches/tobe" >To Be Matched</NavLink>
+        </Menu.Item>
+        <Menu.Item key="/matches/chat">
+          <NavLink to="/matches/chat" >Chats</NavLink>
+        </Menu.Item>
       </SubMenu>
     </Menu>
   );

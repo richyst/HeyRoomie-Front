@@ -1,10 +1,10 @@
 import axios from 'axios';
 
 const instance = axios.create({
-  baseURL: 'https://jsonplaceholder.typicode.com'
+  baseURL: 'http://localhost:8080/'
 });
 
-instance.defaults.headers.common['Authorization'] = localStorage.getItem('access');
+// instance.defaults.headers.common['Authorization'] = localStorage.getItem('access');
 
 // instance.interceptors.request...
 axios.interceptors.request.use(request => {

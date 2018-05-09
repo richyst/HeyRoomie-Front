@@ -2,6 +2,7 @@ import React from 'react';
 import {Button, message} from 'antd'
 
 import './cuestionario.css';
+import axiosInst from '../../axios';
 
 import PreguntaTexto from '../Utility/preguntaTexto';
 import PreguntaRadio from '../Utility/preguntaRadio';
@@ -36,7 +37,13 @@ const dateFormat = 'YYYY-MM-DD';
   }
 
   enviarInfo() {
-    message.success('Exito! Pasa a la siguiente sección.')
+    axiosInst.put('/user', this.state).then(
+      res => {
+        console.log(res);
+      }
+    ).catch(error => {
+      console.log(error);
+    })
   }
   render() {
     const opcionesGenero = [{

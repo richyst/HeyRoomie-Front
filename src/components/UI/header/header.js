@@ -2,7 +2,7 @@ import React from 'react';
 import { Layout, Icon, Button } from 'antd';
 import {connect} from 'react-redux';
 import * as actionCreators from '../../../store/actions/index';
-
+import {withRouter, Link} from 'react-router-dom';
 
 const { Header } = Layout;
 
@@ -19,7 +19,10 @@ const header = (props) => {
         
       </div>
       <div style={{marginLeft: '80%'}} >
-        <Button type="primary" onClick={props.onLogout} >Logout</Button>
+        <Link to="/">
+          <Button type="primary" onClick={props.onLogout} >Logout</Button>
+        </Link>
+        
       </div>
       
     </Header>
@@ -40,4 +43,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps) (header);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps) (header));

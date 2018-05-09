@@ -1,0 +1,29 @@
+.usuarios {
+  padding: 20vh 0 0 0;
+  margin-left: 70%;
+  background-color: white;
+  height: 100vh;
+}
+
+.centroUsuarios{
+  padding: 0px 100px;
+}
+
+.bg{
+  position:fixed;
+  top:0px;
+  left:0px;
+  height:100%;
+  z-index:-1;
+}
+
+.decisiones{
+  text-align: center;
+}
+.logo {
+  background-image: url("./img/LogoHeyRoomie.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 200px;
+  width: 300px;
+}

@@ -7,25 +7,44 @@ import {connect} from 'react-redux';
 
 import Home from '../../Home/home';
 import Cuestionario from '../../Cuestionario/cuestionario';
+import Usuarios from '../../../containers/usuarios';
 
 const { Content } = Layout;
 
 class content extends React.Component {
 
   render() {
-      return (
-    <Content style={{ margin: '0 16px' }}>
-      {this.props.user ? <div style={{height: '32px'}} ></div> : null}
+    let estilo = null;
+    let estiloMain = null;
+    if(this.props.user) {
+      estilo = 
+      {
+        padding: 24,
+        background: '#fff',
+        minHeight: '80vh'
+      }; 
+      estiloMain = {
+        margin: '0 16px'
+      }
+    } else {
+      estilo = {}
+      estiloMain = {}
+    }
 
-      <div style={{ padding: 24, background: '#fff', minHeight: '80vh' }}>
-        <Switch>
-          <Route path="/" exact component={Home} />
-          <Route path="/perfil/cuestionario" exact component={Cuestionario} />
-          {this.props.user ? null : <Route path="/signin" exact component={Home} />}
-        </Switch>
-      </div>
-    </Content>
-  )
+    return (
+      <Content style={estiloMain}>
+        {this.props.user ? <div style={{height: '32px'}} ></div> : null}
+
+        <div style={estilo}>
+          <Switch>
+            {this.props.user ? null : <Route path="/" exact component={Home} />}
+            <Route path="/" exact component={Home} />
+            <Route path="/perfil/cuestionario" exact component={Cuestionario} />
+            {this.props.user ? null : <Route path="/signin" exact component={Usuarios} />}
+          </Switch>
+        </div>
+      </Content>
+    )
   }
 
 }

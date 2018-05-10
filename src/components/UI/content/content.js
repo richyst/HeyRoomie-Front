@@ -14,6 +14,9 @@ const { Content } = Layout;
 
 class content extends React.Component {
 
+  componentDidMount() {
+    console.log(this.props);
+  }
   render() {
     let estilo = null;
     let estiloMain = null;

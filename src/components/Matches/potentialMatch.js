@@ -1,30 +1,32 @@
 import React from 'react';
-import {List, Icon, Avatar} from 'antd';
-import {Link, withRouter} from 'react-router-dom';
+import {List, Icon} from 'antd';
+import { withRouter} from 'react-router-dom';
 
+import InfoMatch from './infoMatch';
 
-const potentialMatch = (props) => {
+class  potentialMatch extends React.Component {
+  render() {
     return (
       <List.Item
-        key={props.key}
+        key={this.props.key}
         actions=
         {
           [
-            <Icon onClick={() => props.acceptMatch(props.id)} type="like-o" />, 
-            <Icon onClick={() => props.rejectMatch(props.id)}   type="dislike-o" />
+            <Icon onClick={() => this.props.acceptMatch(this.props.key)} type="like-o" />, 
+            <Icon onClick={() => this.props.rejectMatch(this.props.key)}   type="dislike-o" />
           ]
         }
         extra={<img width={272} alt="logo" src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png" />}
         >
-        <List.Item.Meta
-          avatar={<Avatar src={props.avatar} />}
-          title={<Link to={'/perfil/' + props.id}>{props.title}</Link>}
-          description={props.description}
+        <InfoMatch 
+          user={this.props.item}
+          id={(this.props.item.user1 === localStorage.getItem('user' )? this.props.item.user1 : this.props.item.user2 )}
           />
-        {props.content}
+
+        {this.props.content}
       </List.Item>
     );
-  
+  }
 }
 
 export default withRouter(potentialMatch);

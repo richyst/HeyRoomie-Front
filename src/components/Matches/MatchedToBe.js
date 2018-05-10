@@ -16,15 +16,19 @@ import {List } from 'antd';
   }
 class MatchesToBe extends React.Component {
   state = {
-
+    matches: []
   }
 
 
   componentDidMount(){
     console.log(listData);
-    AxiosInst.get('/match').then(
+    let body = {
+      uuid: '3cd93ef9-245b-4a86-838a-b61b6b1ff63e'
+    }
+    AxiosInst.post('/matches', body).then(
       res => {
-        console.log(res)
+        this.setState({...this.state, matches: res.data.payload})
+        console.log(this.state);
       }
     ).catch(
       error => {
@@ -39,26 +43,21 @@ class MatchesToBe extends React.Component {
   rejectMatch = (id) => {
     console.log('Match ' + id + ' Rechazado')
   }
-  render() {
+  render = () => {
+    const matches = Object.values(this.state.matches);
     return (
       <div style={{overflowY: 'scroll', maxHeight: '80vh'}} >
         <h4>Eres compatible con estos usuarios...</h4>
         <hr/>
         <List
           itemLayout="vertical"
-          dataSource={listData}
-          footer={<div><b>ant design</b> footer part</div>}
+          dataSource={matches}
           renderItem={item => (
             <PotentialMatch 
               acceptMatch={this.acceptMatch}
               rejectMatch={this.rejectMatch}
-              avatar={item.avatar}
-              id={item.id}
-              title={item.title}
-              description={item.description}
-              href={item.href}
-              key={item.title}
-              content={item.content}
+              item={item}
+              key={item.uuid}
               />
           )}/>
       </div>

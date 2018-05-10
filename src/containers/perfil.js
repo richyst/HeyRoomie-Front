@@ -1,42 +1,19 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom';
 import {Icon , Divider} from 'antd';
+import Axios from '../axios';
 
 class Perfil extends React.Component {
 
   state = {
-    "pets": true,
-    "ocupation": false,
-    "birthdate": "1990-06-16T06:00:00.000+0000",
-    "gender": true,
-    "pMinAge": 20,
-    "pLatitude": 19.370633,
-    "uuid": "989fa2dc-f52b-45b2-be3f-55eddc68d9cc",
-    "password": "",
-    "pPets": 2,
-    "smokes": true,
-    "pAlcohol": 2,
-    "pNoise": 1,
-    "noise": true,
-    "email": "non.dui@egetipsumSuspendisse.co.uk",
-    "alcohol": false,
-    "pSmokes": 2,
-    "partyMonster": true,
-    "pMaxAge": 26,
-    "pLongitud": -99.261303,
-    "pLocationRadius": 3,
-    "lastname": "Sargent Clay",
-    "pGender": 2,
-    "pPartyMonster": 1,
-    "pOcupacion": 1,
-    "name": "Noah Zeph",
-    "status": true
+    uuid: (!this.props.match.params.id ? localStorage.getItem('user'): this.props.match.params.id)
   }
   componentDidMount(){
-    console.log(this.state);
-    this.categorize();
+    console.log(this.props);
+    this.getInfo();
   }
   categorize() {
+
     this.setState(
       {
         ...this.state, 
@@ -56,22 +33,34 @@ class Perfil extends React.Component {
         pPartyMonster: this.state.pPartyMonster === 0 ? 'No Quiere Fiesteros' : this.state.pPartyMonster === 1 ? 'Prefie Fiesteros' : 'No le Importan los Fiesteros',
         pOcupacion: this.state.pOcupacion === 0 ? 'Prefiere Estudiantes' : this.state.pOcupacion === 1 ? 'Prefie Trabajadores' : 'No le Importan las Ocupaciones'
       }
-    );
+    )
     
+  }
+  getInfo = () => {
+    Axios.get('/user/'+this.state.uuid).then(
+      res=> {
+        console.log(res.data.payload)
+        this.setState({
+          ...this.state,
+          ...res.data.payload
+        })
+        this.categorize();
+      }
+    )
   }
   render() {
     console.log(this.state);
     console.log(this.props);
-    const mes = this.state.birthdate.substring(5, 7);
-    const ano = this.state.birthdate.substring(0, 4);
-    const dia = this.state.birthdate.substring(8, 10);
+    // const mes = this.state.birthdate.substring(5, 7);
+    // const ano = this.state.birthdate.substring(0, 4);
+    // const dia = this.state.birthdate.substring(8, 10);
     return (
       <div className="perfil">
         <div style={{display: 'flex', justifyContent: 'space-between'}}>
           <div style={{margin: '5px'}} >
             <h4><strong>{this.state.name}  {this.state.lastname}</strong>
             <br /> 
-            <span style={{fontWeight: '300', fontSize: '0.8em'}}>{dia + '/' + mes + '/' +ano}</span>
+            {/* <span style={{fontWeight: '300', fontSize: '0.8em'}}>{dia + '/' + mes + '/' +ano}</span> */}
             <br/>
             <span style={{fontWeight: 'lighter'}} > {this.state.gender} </span> </h4>
           </div>

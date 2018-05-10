@@ -1,8 +1,8 @@
 import React from 'react';
 import { Layout } from 'antd';
-
+import queryString from 'query-string';
 import {Route, Switch, withRouter } from 'react-router-dom';
-
+import * as ActionCreators from '../../../store/actions/index'
 import {connect} from 'react-redux';
 import MatchedToBe from '../../Matches/MatchedToBe';
 
@@ -15,7 +15,8 @@ const { Content } = Layout;
 class content extends React.Component {
 
   componentDidMount() {
-    console.log(this.props);
+    console.log(this.props,queryString.parse(this.props.location.hash));
+    localStorage.setItem('access', queryString.parse(this.props.location.hash).access_token)
   }
   render() {
     let estilo = null;
@@ -66,6 +67,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
+    onLogin : (user) => dispatch(ActionCreators.login(user))
   };
 };
 

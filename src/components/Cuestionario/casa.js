@@ -54,6 +54,7 @@ class Casa extends React.Component{
     axiosInst.post('/place', body).then(
       res => {
         console.log(res);
+        message.success('Info actualizadda');
       }
     ).catch ( error => {
       console.log(error);

@@ -50,6 +50,7 @@ class preferencias extends React.Component{
     axiosInst.put('/user', this.state).then(
       res => {
         console.log(res);
+        message.success('Info actualizadda');
       }
     ).catch(error => {
       console.log(error);

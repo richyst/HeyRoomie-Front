@@ -48,7 +48,8 @@ class conversacion extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    id: state.chat.id
+    id: state.chat.id,
+    user: state.login.user
   };
 };
 export default connect(mapStateToProps, null) (conversacion);

@@ -33,7 +33,7 @@ class infoMatch extends React.Component {
       return (
         <List.Item.Meta
           avatar={<Avatar src={this.props.id} />}
-          title={ <span style={{fontSize: '1.5em'}}><Link to={'/perfil/' + this.props.id}>{this.state.info.name}</Link></span>}
+          title={ <span style={{fontSize: '1.5em'}}><Link to={'/perfil/' + this.props.id}>{this.state.info.name }</Link> {this.props.match.percentage}</span>}
           description={(this.state.info.ocupation ? 'Estudia' : 'Trabaja') +' - '+ (this.state.info.birthdate) +' - '+ (this.state.info.gender ? 'Hombre' : 'Mujer') }
           />
     );

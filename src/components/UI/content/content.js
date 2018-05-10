@@ -16,7 +16,8 @@ class content extends React.Component {
 
   componentDidMount() {
     console.log(this.props,queryString.parse(this.props.location.hash));
-    localStorage.setItem('access', queryString.parse(this.props.location.hash).access_token)
+    console.log(queryString.parse(this.props.location.hash) ? localStorage.setItem('access', queryString.parse(this.props.location.hash).access_token): null)
+    
   }
   render() {
     let estilo = null;

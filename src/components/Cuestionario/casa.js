@@ -5,7 +5,7 @@ import './cuestionario.css';
 import {withRouter} from  'react-router-dom';
 import PreguntaRadio from '../Utility/preguntaRadio';
 import PreguntaArea from '../Utility/preguntaArea';
-
+import {connect} from 'react-redux'
 import axiosInst from '../../axios';
 // import Mapa from '../Utility/mapa';
 class Casa extends React.Component{
@@ -26,7 +26,7 @@ class Casa extends React.Component{
     externals: false,
     greenArea: false,
     extraInfo: '',
-    user: ''
+    user: this.props.user
   }
 
   componentDidUpdate() {
@@ -51,7 +51,7 @@ class Casa extends React.Component{
     } = this.state;
 
     console.log(body);
-    axiosInst.put('/user', body).then(
+    axiosInst.post('/place', body).then(
       res => {
         console.log(res);
       }
@@ -196,5 +196,10 @@ class Casa extends React.Component{
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    user: state.login.user
+  };
+};
 
-export default withRouter(Casa);
+export default withRouter( connect(mapStateToProps, null) (Casa));

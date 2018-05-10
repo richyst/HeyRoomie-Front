@@ -3,52 +3,52 @@ import { List, Icon } from 'antd';
 
 import Contacto from './contacto';
 const data = [{
-    title: 'Ant Design Title 1',
+    title: 'Usuario 1',
   },
   {
-    title: 'Ant Design Title 2',
+    title: 'Usuario 2',
   },
   {
-    title: 'Ant Design Title 3',
+    title: 'Usuario 3',
   },
   {
-    title: 'Ant Design Title 4',
+    title: 'Usuario 4',
   },
   {
-    title: 'Ant Design Title 5',
+    title: 'Usuario 5',
   },
   {
-    title: 'Ant Design Title 6',
+    title: 'Usuario 6',
   },
   {
-    title: 'Ant Design Title 7',
+    title: 'Usuario 7',
   },
   {
-    title: 'Ant Design Title 8',
+    title: 'Usuario 8',
   },
   {
-    title: 'Ant Design Title 9',
+    title: 'Usuario 9',
   },
   {
-    title: 'Ant Design Title 19',
+    title: 'Usuario 19',
   },
   {
-    title: 'Ant Design Title 11',
+    title: 'Usuario 11',
   },
   {
-    title: 'Ant Design Title 12',
+    title: 'Usuario 12',
   },
   {
-    title: 'Ant Design Title 13',
+    title: 'Usuario 13',
   },
   {
-    title: 'Ant Design Title 14',
+    title: 'Usuario 14',
   },
   {
-    title: 'Ant Design Title 15',
+    title: 'Usuario 15',
   },
   {
-    title: 'Ant Design Title 16',
+    title: 'Usuario 16',
   },
 
 ];

@@ -3,7 +3,7 @@ import axiosInst from '../../axios';
 import { Button, Input, message } from 'antd'
 
 import './cuestionario.css';
-
+import {connect } from 'react-redux';
 import PreguntaRadio from '../Utility/preguntaRadio';
 // import Mapa from '../Utility/mapa';
 
@@ -21,7 +21,8 @@ class preferencias extends React.Component{
     pOcupacion: 0,
     pLatitude: 0,
     pLongitude: 0,
-    pLocationRadius: 0
+    pLocationRadius: 0,
+    uuid: this.props.user
   }
 
   // componentDidMount() {
@@ -179,4 +180,9 @@ class preferencias extends React.Component{
   }
 }
 
-export default preferencias;
+const mapStateToProps = state => {
+  return {
+    user: state.login.user
+  };
+};
+export default connect(mapStateToProps, null) (preferencias);

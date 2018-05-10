@@ -7,7 +7,7 @@ import axiosInst from '../../axios';
 import PreguntaTexto from '../Utility/preguntaTexto';
 import PreguntaRadio from '../Utility/preguntaRadio';
 import { DatePicker } from 'antd';
-
+import {connect } from 'react-redux';
 const dateFormat = 'YYYY-MM-DD';
 
  class YoSoy extends React.Component {
@@ -21,7 +21,8 @@ const dateFormat = 'YYYY-MM-DD';
     partyMonster: false,
     noise: false,
     occupation: false,
-    birthdate: ''
+    birthdate: '',
+    uuid: this.props
   }
 
   componentDidUpdate() {
@@ -29,6 +30,7 @@ const dateFormat = 'YYYY-MM-DD';
   }
 
   validate = () => {
+    this.setState({...this.state, uuid: this.props.user})
     if(this.state.name !== '' && this.state.lastname !== '' && this.state.birthdate !== '') {
       this.enviarInfo();
     }  else {
@@ -37,6 +39,8 @@ const dateFormat = 'YYYY-MM-DD';
   }
 
   enviarInfo() {
+    
+
     axiosInst.put('/user', this.state).then(
       res => {
         console.log(res);
@@ -155,4 +159,10 @@ const dateFormat = 'YYYY-MM-DD';
 }
 
 
-export default YoSoy;
+const mapStateToProps = state => {
+  return {
+    user: state.login.user
+  };
+};
+
+export default connect(mapStateToProps, null)(YoSoy);

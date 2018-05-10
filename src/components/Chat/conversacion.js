@@ -16,7 +16,7 @@ import axios from '../../axios';
 
 class conversacion extends React.Component {
   state = {
-    mensajes: mensajes
+    mensajes: []
   }
   componentDidMount() {
     console.log(this.state);
@@ -36,7 +36,7 @@ class conversacion extends React.Component {
       <div >
         { this.props.id ? this.state.mensajes.map(
           item => {
-            return  <h5 key={item.id} > {this.props.id} {item.message}</h5>;
+            return  <h5 key={item.id} > {this.props.id}</h5>;
           }
         ): null}
         

@@ -19,7 +19,7 @@ class  potentialMatch extends React.Component {
         extra={<img width={272} alt="logo" src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png" />}
         >
         <InfoMatch 
-          user={this.props.item}
+          match={this.props.item}
           id={(this.props.item.user1 === localStorage.getItem('user' )? this.props.item.user1 : this.props.item.user2 )}
           />
 

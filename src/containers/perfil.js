@@ -2,11 +2,11 @@ import React from 'react';
 import {withRouter} from 'react-router-dom';
 import {Icon , Divider} from 'antd';
 import Axios from '../axios';
+import {connect} from 'react-redux';
 
 class Perfil extends React.Component {
 
   state = {
-    uuid: (!this.props.match.params.id ? localStorage.getItem('user'): this.props.match.params.id)
   }
   componentDidMount(){
     console.log(this.props);
@@ -17,6 +17,7 @@ class Perfil extends React.Component {
     this.setState(
       {
         ...this.state, 
+        casa: [],
         gender: this.state.gender ? 'Hombre' : 'Mujer',
         smokes: this.state.smokes ? 'Fumador' : 'No Fumador',
         noise: this.state.noise ? 'Ruidoso' : 'Callado',
@@ -37,7 +38,8 @@ class Perfil extends React.Component {
     
   }
   getInfo = () => {
-    Axios.get('/user/'+this.state.uuid).then(
+    let id = this.props.match.params.id ? this.props.match.params.id: this.props.user;
+    Axios.get('/user/'+ id).then(
       res=> {
         console.log(res.data.payload)
         this.setState({
@@ -45,6 +47,12 @@ class Perfil extends React.Component {
           ...res.data.payload
         })
         this.categorize();
+      }
+    );
+    Axios.post('/places', {uuid: this.props.user}).then(
+      res=> {
+        this.setState({...this.state, casa: Object.values(res.data.payload)})
+        console.log(Object.values(res.data.payload));
       }
     )
   }
@@ -105,6 +113,25 @@ class Perfil extends React.Component {
             </div>
           </div>
           <Divider>Propiedades</Divider>
+          {/* <div className="row">
+              <div className="col-md-4 offset-md-1">    
+                <ul>
+                  <li>{this.state.casa.}</li>
+                  <li>{this.state.casa.}</li>
+                  <li>{this.state.casa.}</li>
+                  <li>{this.state.casa.}</li>
+                  <li>{this.state.casa.}</li>
+                  <li>{this.state.casa.}</li>
+                </ul>
+              </div>
+              <div className="col-md-5 offset-md-1">    
+                <ul>
+                  <li>Edad Mínima: {this.state.casa.}</li>
+                  <li>Edad Máxima: {this.state.casa.}</li>
+                </ul>
+              </div>
+            </div> */}
+          {/* </div> */}
         </div>
         
         
@@ -112,5 +139,11 @@ class Perfil extends React.Component {
     );
   }
 }
+const mapStateToProps = state => {
+  return {
+    user: state.login.user
+  };
+};
 
-export default withRouter(Perfil);
+
+export default withRouter( connect(mapStateToProps, null) (Perfil));

@@ -4,19 +4,17 @@ import * as actionTypes from '../actions/loginActionTypes';
 const initialState = {
   // user: localStorage.getItem('user') ? localStorage.getItem('user') : null , 
   // access: localStorage.getItem('access') ? localStorage.getItem('access') : null
-    user: '3cd93ef9-245b-4a86-838a-b61b6b1ff63e',
+    user: '6d84fcdc-fe5a-4b93-977c-c22ba3aadf56',
     access: 'blalbalblalbalbalsvlsdfñwfc'
 }
 
 const reducer = (state = initialState, action) => {
+  
   switch(action.type){
     case (actionTypes.LOGIN):
       localStorage.setItem('user', action.user.user);
-      localStorage.setItem('access', action.user.access);
       return {
-        ...state,
-        user: action.user.user,
-        access:  action.user.access
+        ...state
       };
     case(actionTypes.LOGOUT):
       localStorage.removeItem('user');

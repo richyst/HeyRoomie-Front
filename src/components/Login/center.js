@@ -12,7 +12,7 @@ import Logo from '../UI/Visuals/logo';
 
 class Center extends React.Component {
   state = {
-    view : 'signin',
+    view : 'signup',
     inUsername: '',
     inPassword: '',
     upUsername: '',
@@ -107,10 +107,6 @@ class Center extends React.Component {
   
   render () {
     const opciones = [
-      {
-        name: 'SignIn',
-        value: 'signin'
-      },
       {
         name: 'SignUp',
         value: 'signup'
